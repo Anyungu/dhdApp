@@ -10,14 +10,19 @@ class landingPage extends Component {
     
     render() {
 
+        const {MainContainer, logoText, belowLogoText} = styles;
         
-
         return (
-            <View style= {styles.MainContainer}>
+            <View style= {MainContainer}>
 
-                 <Text>
-                     lolaaaa
+                 <Text style = {logoText}>
+                     DHD
                  </Text>
+
+                 <Text style = {belowLogoText}>
+                     Access your health faster
+                 </Text>
+
             </View>
 
                 
@@ -28,8 +33,18 @@ class landingPage extends Component {
 const styles = {
     MainContainer: {
         flex:1,
+        alignItems: 'center',
         justifyContent: 'center'
-    }
+    },
+    logoText: {
+        fontSize: 60,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    belowLogoText: {
+        fontSize: 26,
+        textAlign: 'center',
+    },
 }
 
 
