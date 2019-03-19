@@ -17,6 +17,6 @@ How to Use:
 	5. Replace the App.js file with the App.js file from your clone folder
 	6. Add the rest of the files in the root of your project folder
 
-Caution: Do not USE this method if you do not understand Redux
+Caution: Do NOT USE this method if you do not understand REDUX
 
 Email: anyungucw@gmail.com 
