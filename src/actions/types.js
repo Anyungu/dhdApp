@@ -1,5 +1,6 @@
 
 export const TYPEDVALUE= 'typedValue';
+
 export const REGISTERINGUSER = 'registeringUser';
 export const REGISTERSUCCESS = 'registerSuccess';
 export const REGISTERFAIL= 'registerFail';

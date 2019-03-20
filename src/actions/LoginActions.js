@@ -1,5 +1,3 @@
-
-
 import {Actions} from 'react-native-router-flux';
 
 import {TYPEDVALUE, LOGGINGINUSER, LOGINSUCCESS, LOGINFAIL} from './types'
@@ -23,19 +21,21 @@ export const loggingInUser = ({email,password}) => {
                 type: LOGGINGINUSER
             })
     
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(
-                    (user)=>{ userSignedInSuccessfuly(dispatch,user)}
+            // firebase.auth().signInWithEmailAndPassword(email, password)
+            //     .then(
+            //         (user)=>{ userSignedInSuccessfuly(dispatch,user)}
                         
                         
-                    )
-                .catch(function(error) {
+            //         )
+            //     .catch(function(error) {
                 
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    () => userFailedToSignIn (dispatch)
+            //         var errorCode = error.code;
+            //         var errorMessage = error.message;
+            //         () => userFailedToSignIn (dispatch)
                 
-                });
+            //     });
+
+            setTimeout( () => {userSignedInSuccessfuly(dispatch)}, 4000);
             
         };
 
@@ -48,12 +48,13 @@ export const loggingInUser = ({email,password}) => {
 };
 
 
-const userSignedInSuccessfuly = (dispatch , user) => {
+const userSignedInSuccessfuly = (dispatch ) => {
     dispatch ({
         type: LOGINSUCCESS,
-        payload: user
+        // payload: user
     }); 
  //   Actions.main().employeeList();
+    Actions.registerPage();
 };
 
 

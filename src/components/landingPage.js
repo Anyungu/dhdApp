@@ -6,11 +6,60 @@ import {View,
     TouchableOpacity,
     ImageBackground, 
     Dimensions} from 'react-native';
+import {typedValue, loggingInUser} from '../actions';
+import {Spinner} from '../components/reusable';
+import {connect} from 'react-redux';
 
 
 
 
 class landingPage extends Component {
+
+    onLogInButtonPress () {
+        
+        const {email, password} = this.props;
+
+        this.props.loggingInUser({ email, password})
+
+    }
+
+    onSignUpButtonPress () {
+
+    }
+
+    loginButtonOrSpinner () {
+
+        var {width} = Dimensions.get('window');
+
+        const {loginButton, loginButtonText, spinnerView} = styles;
+
+        const {loading} = this.props;
+
+        if (loading) {
+            return (
+            <View style= {{...spinnerView, ...{width:width*0.5}}}>
+                <Spinner size = {40} color= '#008cff'/>
+            </View>
+            
+            );
+        }   
+            return (
+                <TouchableOpacity 
+                style= {{...loginButton, ...{width:width*0.5}}}
+                onPress = {this.onLogInButtonPress.bind(this)}
+                >
+                    <Text style= {loginButtonText}>
+                        LOG IN
+                    </Text>
+                </TouchableOpacity>
+
+            );
+            
+    }
+
+    signUpButtonOrSpinner () {
+
+    }
 
     
     render() {
@@ -21,8 +70,7 @@ class landingPage extends Component {
             belowLogoText, 
             textInputView, 
             textInput, 
-            forgotPasswordText, 
-            loginButton, 
+            forgotPasswordText,  
             loginButtonText,
             newToDhdText,
             signUpButton,
@@ -50,8 +98,8 @@ class landingPage extends Component {
                         placeholder = "email@example.com"
                         autoCorrect = {false}
                         style = {textInput}
-                        // value={value} 
-                        // onChangeText ={onChangeText} 
+                        value={this.props.email} 
+                        onChangeText = {value => this.props.typedValue({prop:'name' , value})}
                         placeholderTextColor = 'gray'
                     />
                 </View>
@@ -62,8 +110,8 @@ class landingPage extends Component {
                         placeholder = "Password"
                         autoCorrect = {false}
                         style = {textInput}
-                        // value={value} 
-                        // onChangeText ={onChangeText} 
+                        value={this.props.password} 
+                        onChangeText = {value => this.props.typedValue({prop:'name' , value})}
                         placeholderTextColor = 'gray'
                     />
                 </View>
@@ -73,16 +121,8 @@ class landingPage extends Component {
                     </Text>
                 </TouchableOpacity>
                 
+                {this.loginButtonOrSpinner()}
                 
-                <TouchableOpacity 
-                    style= {{...loginButton, ...{width:width*0.5}}}
-                    // onPress
-                >
-                    <Text style= {loginButtonText}>
-                        LOG IN
-                    </Text>
-                </TouchableOpacity>
-
                 <View style = {{...lineBreak, ...{width:width*0.8}}}/>
                 <View style = {{...newToDhdContainer, ...{width:width*0.75}}}>
                     <Text style = {newToDhdText}>
@@ -94,7 +134,7 @@ class landingPage extends Component {
 
                 <TouchableOpacity 
                         style= {{...signUpButton, ...{width:width*0.5}}}
-                    // onPress
+                        onPress = {this.onSignUpButtonPress.bind(this)}
                 >
                     <Text style={loginButtonText}>
                         SIGN UP
@@ -158,6 +198,13 @@ const styles = {
         marginTop: 20,
         marginBottom: 20,
     },
+    spinnerView: {
+        alignItems: 'center',
+        paddingTop: 5,
+        paddingBottom: 5,
+        marginTop: 20,
+        marginBottom: 20,
+    },
     signUpButton: {
         alignItems: 'center',
         paddingTop: 5,
@@ -187,10 +234,18 @@ const styles = {
         color: '#ffffff',
         fontSize: 15,
         fontFamily: 'Roboto'
-    }
+    },
 }
 
+const mapStateToProps = ({loginAction}) => {
+
+    const {email, password, loading, error} =  loginAction;
+
+    return  {email, password, loading, error};
+
+};
+
+export default connect (mapStateToProps, {typedValue, loggingInUser})(landingPage);
 
 
-export default landingPage;
 
