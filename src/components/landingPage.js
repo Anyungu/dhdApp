@@ -1,14 +1,18 @@
 
 import React, {Component} from 'react';
+import {typedValue, loggingInUser} from '../actions';
+import {Spinner, Input} from '../components/reusable';
+import {connect} from 'react-redux';
+import {Actions} from 'react-native-router-flux';
+
 import {View, 
     Text, 
     TextInput, 
     TouchableOpacity,
     ImageBackground, 
-    Dimensions} from 'react-native';
-import {typedValue, loggingInUser} from '../actions';
-import {Spinner} from '../components/reusable';
-import {connect} from 'react-redux';
+    Dimensions
+    } from 'react-native';
+
 
 
 
@@ -24,7 +28,7 @@ class landingPage extends Component {
     }
 
     onSignUpButtonPress () {
-
+        Actions.registerPage()
     }
 
     loginButtonOrSpinner () {
@@ -69,7 +73,6 @@ class landingPage extends Component {
             logoText, 
             belowLogoText, 
             textInputView, 
-            textInput, 
             forgotPasswordText,  
             loginButtonText,
             newToDhdText,
@@ -93,26 +96,24 @@ class landingPage extends Component {
                 </View>
                  
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
-                    <TextInput 
+                    <Input 
                         secureTextEntry = {false}
-                        placeholder = "email@example.com"
+                        placeholder = {"email@example.com"}
                         autoCorrect = {false}
-                        style = {textInput}
-                        value={this.props.email} 
-                        onChangeText = {value => this.props.typedValue({prop:'name' , value})}
-                        placeholderTextColor = 'gray'
+                        value= {this.props.email}
+                        onChangeText = {value => this.props.typedValue({prop: 'email' , value})}
+                        placeholderTextColor = {'gray'}
                     />
                 </View>
 
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
-                    <TextInput 
+                    <Input 
                         secureTextEntry = {true}
-                        placeholder = "Password"
+                        placeholder = {"Password"}
                         autoCorrect = {false}
-                        style = {textInput}
                         value={this.props.password} 
-                        onChangeText = {value => this.props.typedValue({prop:'name' , value})}
-                        placeholderTextColor = 'gray'
+                        onChangeText = {value => this.props.typedValue({prop: 'password' , value})}
+                        placeholderTextColor = {'gray'}
                     />
                 </View>
                 <TouchableOpacity style = {{width:width*0.7}}>
@@ -176,11 +177,6 @@ const styles = {
         borderColor: '#FFFFFF',
         padding: 10,
         paddingLeft: 5
-    },
-    textInput: {
-        fontSize: 15,
-        fontFamily: 'Roboto',
-
     },
     forgotPasswordText: {
         color: '#FFFFFF',
