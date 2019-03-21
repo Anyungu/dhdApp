@@ -54,7 +54,7 @@ const userSignedInSuccessfuly = (dispatch ) => {
         // payload: user
     }); 
  //   Actions.main().employeeList();
-    Actions.registerPage();
+    Actions.homePage();
 };
 
 

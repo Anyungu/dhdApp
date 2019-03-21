@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import landingPage from './components/landingPage';
 import registerPage from './components/registerPage';
-import termsPage from './components/termsPage'
+import termsPage from './components/termsPage';
+import homePage from './components/homePage';
 
 
 const RouterComponent = () => {
@@ -30,6 +31,12 @@ const RouterComponent = () => {
                     <Scene
                     key = "termsPage"
                     component = {termsPage}
+                    hideNavBar
+                    />
+
+                    <Scene
+                    key = "homePage"
+                    component = {homePage}
                     hideNavBar
                     />
 
