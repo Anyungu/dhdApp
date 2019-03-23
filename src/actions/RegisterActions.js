@@ -69,13 +69,13 @@ export const registeringUser = ({email, password, confirm, checked, name, phone,
 };
 
 
-const userRegisteredSuccessfuly = (dispatch , user) => {
+const userRegisteredSuccessfuly = (dispatch ) => {
     dispatch ({
         type: REGISTERSUCCESS,
-        payload: user
+        // payload: user
     }); 
  //   Actions.main().employeeList();
- Actions.homepage();
+    Actions.homePage();
 };
 
 

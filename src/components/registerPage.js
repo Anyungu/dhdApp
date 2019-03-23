@@ -29,6 +29,9 @@ class registerPage extends Component {
     }
 
     onCheckBoxCheck () {
+
+        const {checked} = this.props;
+    
         this.props.checkedRegister({checked})
     }
 
@@ -289,7 +292,7 @@ const mapStateToProps = ({registerAction}) => {
 
 };
 
-export default connect (mapStateToProps, {typedValueRegister, registeringUser})(registerPage);
+export default connect (mapStateToProps, {typedValueRegister, registeringUser, checkedRegister})(registerPage);
 
 
 

@@ -5,6 +5,8 @@ import landingPage from './components/landingPage';
 import registerPage from './components/registerPage';
 import termsPage from './components/termsPage';
 import homePage from './components/homePage';
+import mapPage from './components/mapPage';
+import forgortPasswordPage from './components/forgortPasswordPage';
 
 
 const RouterComponent = () => {
@@ -38,6 +40,18 @@ const RouterComponent = () => {
                     key = "homePage"
                     component = {homePage}
                     hideNavBar
+                    />
+
+                    <Scene
+                    key = "mapPage"
+                    component = {mapPage}
+                    hideNavBar
+                    />
+
+                    <Scene
+                    key = "forgortPasswordPage"
+                    component = {forgortPasswordPage}
+                    hideNavBar 
                     />
 
                </Scene>

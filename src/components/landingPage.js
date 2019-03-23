@@ -6,8 +6,7 @@ import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 
 import {View, 
-    Text, 
-    TextInput, 
+    Text,  
     TouchableOpacity,
     ImageBackground, 
     Dimensions
@@ -61,8 +60,8 @@ class landingPage extends Component {
             
     }
 
-    signUpButtonOrSpinner () {
-
+    onForgotTextPress () {
+        Actions.forgortPasswordPage();
     }
 
     
@@ -116,7 +115,9 @@ class landingPage extends Component {
                         placeholderTextColor = {'gray'}
                     />
                 </View>
-                <TouchableOpacity style = {{width:width*0.7}}>
+                <TouchableOpacity 
+                        style = {{width:width*0.7}}
+                        onPress = {this.onForgotTextPress.bind(this)}>
                     <Text style = {forgotPasswordText}>
                         Forgotten Password
                     </Text>
