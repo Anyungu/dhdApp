@@ -7,6 +7,10 @@ import termsPage from './components/termsPage';
 import homePage from './components/homePage';
 import mapPage from './components/mapPage';
 import forgortPasswordPage from './components/forgortPasswordPage';
+import serviceFacultiesPage from './components/serviceFacultiesPage';
+import adminHomePage from './components/adminHomePage';
+import adminHospitalManagementPage from './components/adminHospitalManagementPage';
+import spinnerPage from'./components/spinnerPage';
 
 
 const RouterComponent = () => {
@@ -21,7 +25,6 @@ const RouterComponent = () => {
                     key = "landingPage" 
                     component= {landingPage}
                     hideNavBar
-                    initial
                     /> 
 
                     <Scene
@@ -54,6 +57,31 @@ const RouterComponent = () => {
                     hideNavBar 
                     />
 
+                    <Scene 
+                    key =  "serviceFacultiesPage"
+                    component = {serviceFacultiesPage}
+                    hideNavBar 
+                    />
+
+                    <Scene
+                    key = "adminHomePage"
+                    component = {adminHomePage}
+                    hideNavBar
+                    />
+
+                    <Scene
+                    key = "adminHospitalManagementPage" 
+                    component = {adminHospitalManagementPage}
+                    hideNavBar
+                    />
+
+                    <Scene
+                    key = "spinnerPage"
+                    component = {spinnerPage}
+                    hideNavBar
+                    initial
+                 
+                    />
                </Scene>
 
 

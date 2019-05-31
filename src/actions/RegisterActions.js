@@ -1,4 +1,6 @@
 import {Actions} from 'react-native-router-flux';
+import axios from 'axios';
+
 
 import {CHECKEDREGISTER, TYPEDVALUEREGISTER, REGISTERFAIL, REGISTERINGUSER, REGISTERSUCCESS} from './types';
 
@@ -21,7 +23,7 @@ export const checkedRegister = ({checked}) => {
 export const registeringUser = ({email, password, confirm, checked, name, phone, insurance}) => {
 
 
-    if ( 1 == 1) {
+    
 
         return (dispatch) => {
 
@@ -29,43 +31,54 @@ export const registeringUser = ({email, password, confirm, checked, name, phone,
                 type: REGISTERINGUSER
             })
     
-            // firebase.auth().createUserWithEmailAndPassword(email, password)
-            //     .then(
-            //         (user)=>{
-            //             if(user){
-            //                 user.updateProfile({
-            //                     displayName: name
-                                
-            //                 }).then(
-            //                     user => userRegisteredSuccessfuly(dispatch,user)
-            //                     )
-            //             }
-            //     })
-            //     .catch(function(error) {
+            axios.post('https://nairobidhdheroku.herokuapp.com/auth/clients', {
                 
-            //         var errorCode = error.code;
-            //         var errorMessage = error.message;
-            //         () => userFailedToRegister (dispatch)
-                
-            //     });
-            setTimeout( () => {userRegisteredSuccessfuly (dispatch)}, 4000);
+                "email": email,
+                "firstName": name,
+                "insuranceCover": insurance,
+                "lastName": name,
+                "phone": phone
+                  
+              })
+              .then (response => {
+                console.log("response?")
+                console.log(JSON.stringify(response.data));
+                if (JSON.stringify(response.data.code ) == 200) {
+                   axios.post('https://nairobidhdheroku.herokuapp.com/auth/users', {
+                    "userEmail": email,
+                    "userPassword": password,
+                    "userRole": "client",
+                    "userStatus": false
+
+                   })
+                   .then ( response => {
+                    console.log("response???")
+                    console.log(JSON.stringify(response.data));
+                    if (JSON.stringify(response.data.code ) == 200) {
+                        userRegisteredSuccessfuly(dispatch);
+                    }else {
+                        userFailedToRegister(dispatch);
+                    }
+
+                   })
+                   .catch (error => {
+                     console.log("error?")
+                     console.log(JSON.stringify(error));
+                     userFailedToSignIn(dispatch);
+                   });
+                }else {
+                    userFailedToRegister(dispatch);
+                }
+    
+              })
+              .catch (error => {
+                console.log("error?")
+                console.log(JSON.stringify(error));
+                userFailedToSignIn(dispatch);
+              });
             
         };
-
-    }
-    
-    else {
-
-        return {
-            type: REGISTERFAIL
-
-        };
-        
-
-    }
-
-   
-    
+  
 };
 
 
@@ -74,8 +87,7 @@ const userRegisteredSuccessfuly = (dispatch ) => {
         type: REGISTERSUCCESS,
         // payload: user
     }); 
- //   Actions.main().employeeList();
-    Actions.homePage();
+    Actions.landingPage();
 };
 
 

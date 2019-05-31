@@ -7,7 +7,11 @@ class mapPage extends Component {
     
 
     render() {
+
+        const {lat, long} = this.props;
         
+        console.log(lat);
+        console.log(long);
         
         return (
             <MapView 
@@ -15,14 +19,27 @@ class mapPage extends Component {
                 style = {{flex:1}}
 
                 initialRegion={{
-                latitude: -1.045559,
-                longitude: 37.081669,
+                latitude: lat,
+                longitude: long,
                 latitudeDelta: 0.030,
                 longitudeDelta: 0.0015,
                 }}
+                showsUserLocation = {true}
                 showsTraffic = {true}
                 mapType = "terrain" 
-            />
+            >
+                <MapView.Marker
+
+                    coordinate={{latitude: lat,
+                    longitude: long}}
+                    title={"title"}
+                    description={"description"}
+                
+                />
+
+
+
+            </MapView>
 
         );
     }

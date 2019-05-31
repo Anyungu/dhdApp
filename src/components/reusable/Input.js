@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {TextInput} from 'react-native';
+import {TextInput, keyboardType} from 'react-native';
 
 
 const Input = ({value, onChangeText, placeholder, secureTextEntry, placeholderTextColor}) => {
@@ -20,6 +20,7 @@ const Input = ({value, onChangeText, placeholder, secureTextEntry, placeholderTe
                 value={value} 
                 onChangeText ={onChangeText} 
                 placeholderTextColor = {placeholderTextColor}
+                keyboardType = {keyboardType}
             />
 
 
@@ -35,6 +36,7 @@ const styles = {
         lineHeight: 23,
         fontSize: 15,
         fontFamily: 'Roboto',
+        color: 'red'
     },
 };
 

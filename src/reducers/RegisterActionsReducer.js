@@ -21,19 +21,19 @@ export default (state=INITIAL, action) => {
             return {...state, [action.payload.prop]:action.payload.value , loading:false, error:''};
 
         case CHECKEDREGISTER:
-        return {...state, loading:false, name:'', email: '', password: '', confirm:'', error:'', checked: action.payload, insurance:'', phone:'' };
+        return {...state, loading:false, error:'', checked: action.payload };
 
         case REGISTERINGUSER:
             return {...state, loading:true, error:'' };
 
         case REGISTERSUCCESS:
-            return {...state, user: action.payload, loading:false, name:'', email: '', password: '', confirm:'', error:'', checked:'', insurance:'', phone:'' };
+            return {...state, user: action.payload, loading:false, name:'', email: '', password: '', confirm:'', error:'', insurance:'', phone:'', checked:'true' };
 
         case REGISTERFAIL:
-            return {...state, loading:false, name:'', email: '', password: '', confirm:'', phone:'', insurance:'', error:'Registration Failed.' };
+            return {...state, loading:false, password: '', confirm:'', error:'Registration Failed.' };
 
         default:
-            return state;
+            return INITIAL;
     }
 
 

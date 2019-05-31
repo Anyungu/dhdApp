@@ -7,13 +7,17 @@ import {connect} from 'react-redux';
 // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
+//import {KeyboardAwareScrollView} from'react-native-keyboard-aware-scroll-view';
+
+
 
 import {View, 
     Text, 
     TextInput, 
     TouchableOpacity,
     ImageBackground, 
-    Dimensions
+    Dimensions,
+    KeyboardAvoidingView
     } from 'react-native';
 
 
@@ -50,7 +54,7 @@ class registerPage extends Component {
         if (loading) {
             return (
             <View style= {{...spinnerView, ...{width:width*0.5}}}>
-                <Spinner size = {40} color= '#008cff'/>
+                <Spinner size = {40} color= '#E68100'/>
             </View>
             
             );
@@ -83,10 +87,16 @@ class registerPage extends Component {
                 } = styles;
         
         return (
-            <ImageBackground source={require('../images/secondimage.jpg')} 
+
+           
+
+            <ImageBackground source={require('../images/firstimage.jpg')} 
                 style= {{...mainContainer, ...{height:height, width:width}}}
                 blurRadius={3}
                     >
+
+                <KeyboardAvoidingView behavior="padding">
+
                 <View style = {headerContainer}>
 
                     {/* <FontAwesome5 name={'capsules'} size={30} color="#008cff"/>  */}
@@ -98,7 +108,7 @@ class registerPage extends Component {
                 </View> 
                  
                 
-
+               
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
                     <TextInput 
                         secureTextEntry = {false}
@@ -110,7 +120,7 @@ class registerPage extends Component {
                         placeholderTextColor = 'gray'
                     />
                 </View>
-
+     
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
                     <TextInput 
                         secureTextEntry = {false}
@@ -122,6 +132,7 @@ class registerPage extends Component {
                         placeholderTextColor = 'gray'
                     />
                 </View>
+           
 
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
                     <TextInput 
@@ -135,8 +146,7 @@ class registerPage extends Component {
                     />
                 </View>
 
-                
-
+              
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
                     <TextInput 
                         secureTextEntry = {false}
@@ -148,7 +158,7 @@ class registerPage extends Component {
                         placeholderTextColor = 'gray'
                     />
                 </View>
-
+           
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
                     <TextInput 
                         secureTextEntry = {true}
@@ -160,7 +170,7 @@ class registerPage extends Component {
                         placeholderTextColor = 'gray'
                     />
                 </View>
-
+          
                 <View style = {{...textInputView, ...{width:width*0.7}}}>
                     <TextInput 
                         secureTextEntry = {true}
@@ -171,8 +181,8 @@ class registerPage extends Component {
                         onChangeText = {value => this.props.typedValueRegister({prop:'confirm' , value})}
                         placeholderTextColor = 'gray'
                     />
+          
                 </View>
-                
                 <View style = {{...termsView, ...{width:width*0.7}}}>
                     <CheckBox
                         right
@@ -192,12 +202,16 @@ class registerPage extends Component {
                     
                 </View>
                 
+                  
                 {this.signUpButtonOrSpinner()}
                 
-
+              
+      
+                </KeyboardAvoidingView>
                 
-                    
             </ImageBackground>
+
+          
 
                 
         );
@@ -236,6 +250,7 @@ const styles = {
     textInput: {
         fontSize: 15,
         fontFamily: 'Roboto',
+        color: 'red'
 
     },
     loginButton: {

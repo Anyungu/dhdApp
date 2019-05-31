@@ -18,16 +18,35 @@ import {View,
 
 class landingPage extends Component {
 
+    state = {validEmail:true, validEmailMessage:''}
+
+    emailValidate () {
+     
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ; 
+
+        if(reg.test(text) === false)
+            {
+            console.log("Email is Not Correct");
+            this.setState({email:text})
+            return false;
+            }
+        else {
+          this.setState({email:text})
+          console.log("Email is Correct");
+        }
+
+    }
+
     onLogInButtonPress () {
         
         const {email, password} = this.props;
 
-        this.props.loggingInUser({ email, password})
+        this.props.loggingInUser({ email, password});
 
     }
 
     onSignUpButtonPress () {
-        Actions.registerPage()
+        Actions.registerPage();
     }
 
     loginButtonOrSpinner () {
@@ -41,7 +60,7 @@ class landingPage extends Component {
         if (loading) {
             return (
             <View style= {{...spinnerView, ...{width:width*0.5}}}>
-                <Spinner size = {40} color= '#008cff'/>
+                <Spinner size = {40} color= '#E68100'/>
             </View>
             
             );
@@ -77,6 +96,7 @@ class landingPage extends Component {
             newToDhdText,
             signUpButton,
             newToDhdContainer,
+            errortextStyle,
             lineBreak} = styles;
         
         return (
@@ -102,6 +122,8 @@ class landingPage extends Component {
                         value= {this.props.email}
                         onChangeText = {value => this.props.typedValue({prop: 'email' , value})}
                         placeholderTextColor = {'gray'}
+                        keyboardType = {'email-address'}
+                        
                     />
                 </View>
 
@@ -122,6 +144,12 @@ class landingPage extends Component {
                         Forgotten Password
                     </Text>
                 </TouchableOpacity>
+                <View style = {{width:width*0.8}}>
+                    <Text style = {errortextStyle}>
+                        {this.props.error}
+                    </Text>
+                </View>
+                
                 
                 {this.loginButtonOrSpinner()}
                 
@@ -185,6 +213,12 @@ const styles = {
         textAlign: 'right',
         fontFamily: 'Roboto',
         fontStyle: 'italic'
+    },
+    errortextStyle: {
+        color: 'red',
+        fontSize: 18,
+        textAlign: 'center',
+        fontFamily: 'Roboto'
     },
     loginButton: {
         alignItems: 'center',
