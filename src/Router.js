@@ -15,8 +15,20 @@ import spinnerPage from'./components/spinnerPage';
 
 const RouterComponent = () => {
 
+    onBackPress = () => {    
+
+        const scene = Actions.currentScene;
+
+        if (scene === "landPage" || scece === "homePage" || scene === "adminHomePage" || scene === "spinnerPage") {
+            BackHandler.exitApp();
+            return true;
+        }
+        Actions.pop();
+        return true;
+    }
+
     return(
-        <Router>
+        <Router backAndroidHandler={this.onBackPress}>
             <Scene key="root" hideNavBar>
 
                 <Scene key="auth">
@@ -25,6 +37,7 @@ const RouterComponent = () => {
                     key = "landingPage" 
                     component= {landingPage}
                     hideNavBar
+                    
                     /> 
 
                     <Scene

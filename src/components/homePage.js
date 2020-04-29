@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, Dimensions, Image, TextInput} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import Octicons from '@expo/vector-icons/Octicons';
-import AntDesign from '@expo/vector-icons/AntDesign';
+// import { Ionicons } from '@expo/vector-icons';
+// import FontAwesome from '@expo/vector-icons/FontAwesome';
+// import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+// import Octicons from '@expo/vector-icons/Octicons';
+// import AntDesign from '@expo/vector-icons/AntDesign';
 import {hospitalFetching, typedValueModal,loggingOutUser} from '../actions';
 import {connect} from 'react-redux';
 import Modal from "react-native-modal";
@@ -273,7 +273,10 @@ class homePage extends Component {
                     <TouchableOpacity style = {{...serviceCard, ...{width:width*0.8}}} 
                         onPress = {this.onPalliativePress.bind(this)}>
                         <View style={iconSideView}>
-                            <FontAwesome name="heartbeat" size={32} color="#76355B" />
+                            {/* <FontAwesome name="heartbeat" size={32} color="#76355B" /> */}
+                            <Image
+                                source = {require('../images/syringe-with-drug-for-heart.svg')}
+                            />
                         </View>
                         <View style = {textSideView}>
                             <Text style={serviceCardText}>
@@ -287,7 +290,9 @@ class homePage extends Component {
                     <TouchableOpacity style = {{...serviceCard, ...{width:width*0.8}}}
                         onPress = {this.onMortuaryPress.bind(this)}>
                         <View style={iconSideView}>
-                            <AntDesign name="gitlab" size={32} color="#76355B" />
+                        <Image
+                                source = {require('../images/morgue.svg')}
+                            />
                         </View>
                         <View style={textSideView}>
                             <Text style={serviceCardText}>
@@ -301,7 +306,9 @@ class homePage extends Component {
                     <TouchableOpacity style = {{...serviceCard, ...{width:width*0.8}}}
                         onPress = {this.onSubstancePress.bind(this)}>
                         <View style={{...iconSideView, ...{paddingLeft: 9, paddingRight: 9}}}>
-                            <Ionicons name="md-medical" size={32} color="#76355B" />
+                            <Image
+                                source = {require('../images/syringe-forbidden.svg')}
+                            />
                         </View>
                         <View style = {textSideView}>
                             <Text style={serviceCardText}>
@@ -315,7 +322,9 @@ class homePage extends Component {
                     <TouchableOpacity style = {{...serviceCard, ...{width:width*0.8}}}
                         onPress = {this.onMentalPress.bind(this)}>
                         <View style={iconSideView}>
-                            <MaterialCommunityIcons name="brain" size={32} color="#76355B" />
+                            <Image
+                                source = {require('../images/mental-health.svg')}
+                            />
                         </View>
                         <View style={textSideView}>
                             <Text style={serviceCardText}>
@@ -329,7 +338,9 @@ class homePage extends Component {
                     <TouchableOpacity style = {{...serviceCard, ...{width:width*0.8}}}
                         onPress = {this.onLegalPress.bind(this)}>
                         <View style={{...iconSideView, ...{paddingLeft: 9, paddingRight: 9}}}>
-                            <Octicons name="law" size={32} color="#76355B" />
+                            <Image
+                                source = {require('../images/libra.svg')}
+                            />
                         </View>
                         <View style={textSideView}>
                             <Text style={serviceCardText}>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {MapView} from 'expo';
+import {MapView} from 'react-native-maps';
 
 
 
@@ -28,7 +28,7 @@ class mapPage extends Component {
                 showsTraffic = {true}
                 mapType = "terrain" 
             >
-                <MapView.Marker
+                <Marker
 
                     coordinate={{latitude: lat,
                     longitude: long}}

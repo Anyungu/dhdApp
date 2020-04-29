@@ -2,13 +2,14 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, Dimensions, ImageBackground, TextInput } from 'react-native';
 import {Spinner} from '../components/reusable';
-import AntDesign from '@expo/vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 
 class forgortPasswordPage extends Component {
 
     sendLinkButtonOrSpinner () {
 
+        
         var {width} = Dimensions.get('window');
 
         const {sendLinkButton, sendLinkButtonText, spinnerView} = styles;
@@ -47,7 +48,7 @@ class forgortPasswordPage extends Component {
                     >
             
                 <View style={iconView}>
-                            <AntDesign name="unlock" size={122} color="#76355B" />
+                            <Icon name="unlock" size={122} color="#76355B" />
                 </View>
                 <View>
                     <Text style = {{fontSize: 25, textAlign: "center", fontWeight: 'bold', color: 'white'}}>
